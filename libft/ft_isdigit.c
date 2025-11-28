@@ -6,11 +6,11 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:36:30 by julauren          #+#    #+#             */
-/*   Updated: 2025/10/28 11:47:31 by julauren         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:42:14 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
 int	ft_isdigit(int c)
 {

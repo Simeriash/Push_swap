@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/27 15:18:52 by julauren         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:22:18 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+//# include <stdint.h>
+# include <limits.h>
 # include <stdio.h>		//A EFFACER !!!
 
 typedef struct s_stack	t_stack;
@@ -26,6 +28,7 @@ struct s_stack
 
 //LIBFT
 size_t	ft_strlen(const char *s);
+int		ft_isdigit(int c);
 
 //PUSH_SWAP
 int		main(int ac, char **av);
