@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/26 12:14:12 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/27 15:39:13 by julauren         ###   ########.fr       */
+/*   Created: 2025/10/13 14:36:30 by julauren          #+#    #+#             */
+/*   Updated: 2025/10/28 11:47:31 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_isdigit(int c)
 {
-	t_stack	a;
-	int		len;
-
-	if (ac == 1)
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
-	len = ft_make_list(ac, av, &a);
-	if (len == -1)
-		return (0);
-	printf("Hello\n");
+	if (c >= '0' && c <= '9')
+		return (1);
 	return (0);
 }

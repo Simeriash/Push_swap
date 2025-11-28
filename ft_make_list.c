@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_make_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/26 12:14:12 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/27 15:39:13 by julauren         ###   ########.fr       */
+/*   Created: 2025/11/27 15:12:38 by julauren          #+#    #+#             */
+/*   Updated: 2025/11/27 15:39:10 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int	ft_make_list(int ac, char **av, t_stack *a)
 {
-	t_stack	a;
-	int		len;
+	int	len;
 
-	if (ac == 1)
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
-	len = ft_make_list(ac, av, &a);
-	if (len == -1)
-		return (0);
-	printf("Hello\n");
-	return (0);
+	len = 0;
+	a->list = malloc(sizeof(int) * ac);
+	if (!(a->list))
+		return (-1);
+	return (len);
 }

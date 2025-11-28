@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 13:29:36 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/27 11:59:34 by julauren         ###   ########.fr       */
+/*   Updated: 2025/11/27 14:19:10 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ static void	ft_push_i(t_stack *i, t_stack *j)
 {
 	if (j->nb == 0)
 		return ;
-	i->list[i->nb - 1] = j->list[j->nb - 1];
-	j->list[j->nb] = 0;
+	i->list[i->nb] = j->list[j->nb - 1];
 	(i->nb)++;
 	(j->nb)--;
 }
