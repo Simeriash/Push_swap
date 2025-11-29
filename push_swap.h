@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/28 14:22:18 by julauren         ###   ########.fr       */
+/*   Updated: 2025/11/29 16:15:51 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void	ft_reverse_rotate_a(t_stack *a);
 void	ft_reverse_rotate_b(t_stack *b);
 void	ft_both_reverse_rotate(t_stack *a, t_stack *b);
 int		ft_make_list(int ac, char **av, t_stack *a);
+int		ft_atoi_ps(const char *str, int *ctrl);
 
 #endif

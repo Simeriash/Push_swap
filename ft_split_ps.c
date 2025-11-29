@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_make_list.c                                     :+:      :+:    :+:   */
+/*   ft_split_ps.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 15:12:38 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/29 17:45:00 by julauren         ###   ########.fr       */
+/*   Created: 2025/11/29 17:30:42 by julauren          #+#    #+#             */
+/*   Updated: 2025/11/29 17:42:26 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,63 @@ static int	ft_count_nb(const char *str)
 			(i)++;
 		while (ft_isdigit(str[i]) && str[i] != '\0')
 			i++;
-		if (!(ft_isdigit(str[i])) && !(str[i] == ' ' || str[i] == '\0'))
-			return (-1);
 		count++;
 	}
 	return (count);
 }
 
-int	ft_make_list(int ac, char **av, t_stack *a)
+static void	ft_free_tab(char **tab, int n)
 {
-	int	len;
-	int	ctrl;
 	int	i;
 
-	len = 0;
-	i = 1;
-	while (i < ac)
-	{
-		ctrl = ft_count_nb(av[i]);
-		if (ctrl <= 0)
-			return (-2);
-		len += ctrl;
-		i++;
-	}
-	a->list = malloc(sizeof(int) * len);
-	if (!(a->list))
-		return (-1);
 	i = 0;
-	ctrl = 0;
-	while (i < len)
+	while (i < n)
 	{
-		a->list[i] = ft_atoi_ps(av[i + 1], &ctrl);
-		if (ctrl)
-			return (-2);
-		printf("%d\n", a->list[i]);
+		free(tab[i]);
 		i++;
 	}
-	return (i);
+	free(tab);
+}
+
+static char	**ft_tab(const char *s, char **tab, int nb_nb)
+{
+	int	i;
+	int	start;
+	int	end;
+
+	i = 0;
+	end = 0;
+	while (i < nb_nb)
+	{
+		start = end;
+		while (s[start] == ' ' && s[start] != '\0')
+			start++;
+		end = start;
+		while (s[end] != ' ' && s[end] != '\0')
+			end++;
+		tab[i] = ft_substr(s, start, end - start);
+		if (!tab[i])
+		{
+			ft_free_tab(tab, i);
+			return (NULL);
+		}
+		i++;
+	}
+	return (tab);
+}
+
+char	**ft_split_ps(const char *s)
+{
+	int		nb_nb;
+	char	**tab;
+
+	if (!s)
+		return (NULL);
+	nb_nb = ft_count_nb(s);
+	tab = malloc(sizeof (*tab) * (nb_nb + 1));
+	if (!tab)
+		return (NULL);
+	tab[nb_nb] = NULL;
+	tab = ft_tab(s, tab, nb_nb);
+	return (tab);
 }
