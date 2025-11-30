@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/29 16:15:51 by julauren         ###   ########.fr       */
+/*   Updated: 2025/11/30 15:28:39 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-//# include <stdint.h>
 # include <limits.h>
 # include <stdio.h>		//A EFFACER !!!
 
@@ -29,6 +28,7 @@ struct s_stack
 //LIBFT
 size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 
 //PUSH_SWAP
 int		main(int ac, char **av);
@@ -44,6 +44,7 @@ void	ft_reverse_rotate_a(t_stack *a);
 void	ft_reverse_rotate_b(t_stack *b);
 void	ft_both_reverse_rotate(t_stack *a, t_stack *b);
 int		ft_make_list(int ac, char **av, t_stack *a);
+char	**ft_split_ps(const char *s);
 int		ft_atoi_ps(const char *str, int *ctrl);
 
 #endif
