@@ -7,7 +7,7 @@ LIBFT_DIR := libft/
 SOURCES_LIB := ft_strlen.c ft_isdigit.c ft_substr.c
 
 SOURCES := $(addprefix $(LIBFT_DIR), $(SOURCES_LIB))\
-		ft_push_swap.c ft_swap.c ft_push.c ft_rotate.c ft_reverse_rotate.c ft_make_list.c ft_split_ps.c ft_atoi_ps.c
+		ft_push_swap.c ft_swap.c ft_push.c ft_rotate.c ft_reverse_rotate.c ft_make_list.c ft_split_ps.c ft_atoi_ps.c ft_format_stack.c
 
 OBJ_DIR := objects/
 

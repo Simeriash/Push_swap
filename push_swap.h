@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/30 15:28:39 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:14:49 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ struct s_stack
 {
 	int	nb;
 	int	*list;
+};
+
+typedef struct s_index	t_index;
+struct s_index
+{
+	int	i;
+	int	ctrl;
 };
 
 //LIBFT
@@ -46,5 +53,6 @@ void	ft_both_reverse_rotate(t_stack *a, t_stack *b);
 int		ft_make_list(int ac, char **av, t_stack *a);
 char	**ft_split_ps(const char *s);
 int		ft_atoi_ps(const char *str, int *ctrl);
+int		ft_format_stack(t_stack *a);
 
 #endif
