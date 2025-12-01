@@ -1,53 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_stack.c                                  :+:      :+:    :+:   */
+/*   ft_sort_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 10:13:14 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/01 12:03:44 by julauren         ###   ########.fr       */
+/*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
+/*   Updated: 2025/12/01 15:30:01 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_swap_stack(t_stack *a)
+static int	ft_min(t_stack *x, int min)
 {
 	int	i;
 	int	tmp;
-	int	end;
+	int	index;
 
 	i = 0;
-	end = (a->nb) / 2;
-	while (i < end)
+	tmp = INT_MAX;
+	while (i < x->nb)
 	{
-		tmp = a->list[i];
-		a->list[i] = a->list[a->nb - 1 - i];
-		a->list[a->nb - 1 - i] = tmp;
-		i++;
-	}
-}
-
-int	ft_format_stack(t_stack *a)
-{
-	int	i;
-	int	j;
-	int	end;
-
-	i = 0;
-	end = a->nb - 1;
-	while (i < end)
-	{
-		j = i + 1;
-		while (j <= end)
+		if ((x->list[i] > min) && (tmp > x->list[i]))
 		{
-			if (a->list[j] == a->list[i])
-				return (-2);
-			j++;
+			tmp = x->list[i];
+			index = i;
 		}
 		i++;
 	}
-	ft_swap_stack(a);
-	return (0);
+	return (index);
+}
+
+static int	ft_max(t_stack *x, int max)
+{
+	int	i;
+	int	tmp;
+	int	index;
+
+	i = 0;
+	tmp = INT_MIN;
+	while (i < x->nb)
+	{
+		if ((x->list[i] < max) && (tmp < x->list[i]))
+		{
+			tmp = x->list[i];
+			index = i;
+		}
+		i++;
+	}
+	return (index);
+}
+
+int	ft_sort_stack(t_stack *a)
+{
+	t_stack	b;
+
+	b.nb = 0;
+	b.list = malloc(sizeof (int) * (a->nb));
 }

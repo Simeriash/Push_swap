@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:14:12 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/30 17:21:33 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/01 12:01:46 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int ac, char **av)
 			free(a.list);
 		return (0);
 	}
+	// ft_sort_stack(&a);
 	free(a.list);
 	return (0);
 }

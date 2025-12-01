@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:12:38 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/01 10:40:40 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/01 13:42:53 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ int	ft_make_list(int ac, char **av, t_stack *a)
 		(a->nb) += ctrl;
 		i++;
 	}
+	if (a->nb == 1)
+		return (-1);
 	a->list = malloc(sizeof(int) * (a->nb));
 	if (!(a->list))
 		return (-1);
