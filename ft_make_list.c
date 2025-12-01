@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:12:38 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/01 10:36:36 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:40:40 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,6 @@ static int	ft_fill_in_tab(int ac, char **av, t_stack *a)
 	return (0);
 }
 
-static void	ft_print(int *num, int len)			//A EFFACER !!!
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		printf("%d ", num[i]);
-		i++;
-	}
-	printf("\n");
-	printf("len: %d\n", len);
-}
-
 int	ft_make_list(int ac, char **av, t_stack *a)
 {
 	int	ctrl;
@@ -124,6 +110,5 @@ int	ft_make_list(int ac, char **av, t_stack *a)
 	ctrl = ft_fill_in_tab(ac, av, a);
 	if (ctrl < 0)
 		return (ctrl);
-	ft_print(a->list, a->nb);			//A EFFACER !!!
 	return (0);
 }
