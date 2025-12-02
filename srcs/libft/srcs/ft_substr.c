@@ -6,11 +6,11 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 11:20:08 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/30 16:07:36 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/02 11:28:04 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../libft.h"
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
@@ -28,7 +28,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		size = slen - start;
 	else
 		size = len;
-	dest = malloc(sizeof (*dest) * (size + 1));
+	dest = ft_calloc(size + 1, sizeof (*dest));
 	if (!dest)
 		return (NULL);
 	i = 0;
@@ -37,6 +37,5 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		dest[i] = s[start + i];
 		i++;
 	}
-	dest[i] = '\0';
 	return (dest);
 }

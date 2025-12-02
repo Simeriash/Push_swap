@@ -1,53 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_stack.c                                  :+:      :+:    :+:   */
+/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 10:13:14 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/01 12:03:44 by julauren         ###   ########.fr       */
+/*   Created: 2025/11/26 16:14:22 by julauren          #+#    #+#             */
+/*   Updated: 2025/12/02 14:18:21 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-static void	ft_swap_stack(t_stack *a)
+static void	ft_reverse_rotate(t_stack *x)
 {
 	int	i;
 	int	tmp;
 	int	end;
 
+	if (x->nb <= 1)
+		return ;
+	tmp = x->list[0];
 	i = 0;
-	end = (a->nb) / 2;
+	end = x->nb - 1;
 	while (i < end)
 	{
-		tmp = a->list[i];
-		a->list[i] = a->list[a->nb - 1 - i];
-		a->list[a->nb - 1 - i] = tmp;
+		x->list[i] = x->list[i + 1];
 		i++;
 	}
+	x->list[end] = tmp;
 }
 
-int	ft_format_stack(t_stack *a)
+void	ft_reverse_rotate_a(t_stack *a)
 {
-	int	i;
-	int	j;
-	int	end;
+	ft_reverse_rotate(a);
+	write(1, "rra\n", 4);
+}
 
-	i = 0;
-	end = a->nb - 1;
-	while (i < end)
-	{
-		j = i + 1;
-		while (j <= end)
-		{
-			if (a->list[j] == a->list[i])
-				return (-2);
-			j++;
-		}
-		i++;
-	}
-	ft_swap_stack(a);
-	return (0);
+void	ft_reverse_rotate_b(t_stack *b)
+{
+	ft_reverse_rotate(b);
+	write(1, "rrb\n", 4);
+}
+
+void	ft_both_reverse_rotate(t_stack *a, t_stack *b)
+{
+	ft_reverse_rotate(a);
+	ft_reverse_rotate(b);
+	write(1, "rrr\n", 4);
 }

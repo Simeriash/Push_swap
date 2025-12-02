@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/26 12:14:12 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/01 12:01:46 by julauren         ###   ########.fr       */
+/*   Created: 2025/10/13 14:14:45 by julauren          #+#    #+#             */
+/*   Updated: 2025/12/02 11:24:56 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../libft.h"
 
-int	main(int ac, char **av)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	t_stack	a;
-	int		ctrl;
+	size_t			i;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	a.list = NULL;
-	if (ac == 1)
-		return (0);
-	ctrl = ft_make_list(ac, av, &a);
-	if (ctrl == -2)
-		write(2, "Error\n", 6);
-	if (ctrl < 0)
+	i = 0;
+	d = dest;
+	s = (unsigned char *)src;
+	while (i < n)
 	{
-		if (a.list)
-			free(a.list);
-		return (0);
+		d[i] = s[i];
+		i++;
 	}
-	// ft_sort_stack(&a);
-	free(a.list);
-	return (0);
+	return (dest);
 }

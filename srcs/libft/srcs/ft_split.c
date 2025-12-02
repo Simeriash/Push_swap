@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_ps.c                                      :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/29 17:30:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/30 13:59:50 by julauren         ###   ########.fr       */
+/*   Created: 2025/10/17 14:07:06 by julauren          #+#    #+#             */
+/*   Updated: 2025/12/02 11:26:34 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../libft.h"
 
-static int	ft_count_nb(const char *str)
+static int	ft_count_str(const char *str, char c)
 {
 	int	i;
 	int	count;
@@ -21,13 +21,11 @@ static int	ft_count_nb(const char *str)
 	count = 0;
 	while (str[i] != '\0')
 	{
-		while (str[i] == ' ' && str[i] != '\0')
+		while (str[i] == c && str[i] != '\0')
 			i++;
 		if (str[i] == '\0')
 			return (count);
-		if (str[i] == '-' || str[i] == '+')
-			i++;
-		while (ft_isdigit(str[i]) && str[i] != '\0')
+		while (str[i] != c && str[i] != '\0')
 			i++;
 		count++;
 	}
@@ -47,7 +45,7 @@ static void	ft_free_tab(char **tab, int n)
 	free(tab);
 }
 
-static char	**ft_tab(const char *s, char **tab, int nb_nb)
+static char	**ft_tab(const char *s, char c, char **tab, int nb_str)
 {
 	int	i;
 	int	start;
@@ -55,13 +53,13 @@ static char	**ft_tab(const char *s, char **tab, int nb_nb)
 
 	i = 0;
 	end = 0;
-	while (i < nb_nb)
+	while (i < nb_str)
 	{
 		start = end;
-		while (s[start] == ' ' && s[start] != '\0')
+		while (s[start] == c && s[start] != '\0')
 			start++;
 		end = start;
-		while (s[end] != ' ' && s[end] != '\0')
+		while (s[end] != c && s[end] != '\0')
 			end++;
 		tab[i] = ft_substr(s, start, end - start);
 		if (!tab[i])
@@ -74,18 +72,18 @@ static char	**ft_tab(const char *s, char **tab, int nb_nb)
 	return (tab);
 }
 
-char	**ft_split_ps(const char *s)
+char	**ft_split(const char *s, char c)
 {
-	int		nb_nb;
+	int		nb_str;
 	char	**tab;
 
 	if (!s)
 		return (NULL);
-	nb_nb = ft_count_nb(s);
-	tab = malloc(sizeof (*tab) * (nb_nb + 1));
+	nb_str = ft_count_str(s, c);
+	tab = malloc(sizeof (*tab) * (nb_str + 1));
 	if (!tab)
 		return (NULL);
-	tab[nb_nb] = NULL;
-	tab = ft_tab(s, tab, nb_nb);
+	tab[nb_str] = NULL;
+	tab = ft_tab(s, c, tab, nb_str);
 	return (tab);
 }

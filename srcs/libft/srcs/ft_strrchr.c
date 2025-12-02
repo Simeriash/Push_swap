@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_ps.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/29 16:14:38 by julauren          #+#    #+#             */
-/*   Updated: 2025/11/30 15:57:10 by julauren         ###   ########.fr       */
+/*   Created: 2025/10/15 13:16:36 by julauren          #+#    #+#             */
+/*   Updated: 2025/12/02 11:27:53 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../libft.h"
 
-int	ft_atoi_ps(const char *str, int *ctrl)
+char	*ft_strrchr(const char *s, int c)
 {
 	int		i;
-	long	num;
-	int		sign;
+	char	*t;
 
-	i = 0;
-	num = 0;
-	sign = 1;
-	if (str[i] == '-')
-		sign = -sign;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (ft_isdigit(str[i]))
+	i = ft_strlen(s);
+	t = (char *)s;
+	while (i >= 0)
 	{
-		if (num > INT_MAX || num < INT_MIN)
-			break ;
-		num = num * 10 + str[i] - 48;
-		i++;
+		if (t[i] == (char )c)
+			return (&t[i]);
+		i--;
 	}
-	if (num > INT_MAX || num < INT_MIN)
-	{
-		num = 0;
-		*ctrl = 1;
-	}
-	return (sign * num);
+	return (NULL);
 }

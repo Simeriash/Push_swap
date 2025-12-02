@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/01 10:14:49 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:34:41 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdio.h>		//A EFFACER !!!
+# include "srcs/libft/libft.h"
 
 typedef struct s_stack	t_stack;
 struct s_stack
@@ -31,11 +32,6 @@ struct s_index
 	int	i;
 	int	ctrl;
 };
-
-//LIBFT
-size_t	ft_strlen(const char *s);
-int		ft_isdigit(int c);
-char	*ft_substr(const char *s, unsigned int start, size_t len);
 
 //PUSH_SWAP
 int		main(int ac, char **av);

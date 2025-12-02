@@ -6,11 +6,11 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:12:38 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/01 13:42:53 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:17:59 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static int	ft_count_nb(const char *str)
 {
