@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/02 14:34:41 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:34:40 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ struct s_stack
 {
 	int	nb;
 	int	*list;
+	int	i;
+	int	j;
+	int	pivot;
 };
 
 typedef struct s_index	t_index;
@@ -33,7 +36,6 @@ struct s_index
 	int	ctrl;
 };
 
-//PUSH_SWAP
 int		main(int ac, char **av);
 void	ft_swap_a(t_stack *a);
 void	ft_swap_b(t_stack *b);
@@ -50,5 +52,6 @@ int		ft_make_list(int ac, char **av, t_stack *a);
 char	**ft_split_ps(const char *s);
 int		ft_atoi_ps(const char *str, int *ctrl);
 int		ft_format_stack(t_stack *a);
+int		ft_sort_stack(t_stack *a);
 
 #endif
