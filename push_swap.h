@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/02 16:34:40 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/03 08:02:39 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ struct s_stack
 	int	*list;
 	int	i;
 	int	j;
-	int	pivot;
+	int	median;
 };
 
 typedef struct s_index	t_index;
