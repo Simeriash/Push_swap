@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/03 11:07:46 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/03 15:35:17 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	ft_sort_stack(t_stack *a)
 				else
 				{
 					ft_push_b(&b, a);
-					b.j = b.nb;
+					b.j = b.nb - 1;
 					while (a->i < (a->nb - 1))
 					{
 						ft_push_b(&b, a);
@@ -135,7 +135,55 @@ int	ft_sort_stack(t_stack *a)
 		}
 		else
 		{
-			//i dans la moitié sup & j dans la moitié inf
+			while (a->j >= 0)
+			{
+				ft_reverse_rotate_a(a);
+				(a->i)--;
+				(a->j)--;
+			}
+			a->j = a->nb - 1;
+			if ((a->j - a->i) == 1)
+			{
+				ft_swap_a(a);
+				a->i = a->j;
+			}
+			else
+			{
+				ft_push_b(&b, a);
+				b.j = b.nb - 1;
+				a->median = (a->nb) / 2;
+				if (a->i > a->median)
+				{
+					while (a->i < (a->nb - 1))
+					{
+						ft_push_b(&b, a);
+						if (((a->nb - a->i) > 1) && ((b.nb - b.j) > 1))
+						{
+							ft_both_rotate(a, &b);
+							(a->i)++;
+							(b.j)++;
+						}
+					}
+					while (b.j < (b.nb - 1))
+					{
+						ft_rotate_b(&b);
+						(b.j)++;
+					}
+					ft_push_a(a, &b);
+					(a->i)++;
+				}
+				else
+				{
+					while (a->i >= 0)
+					{
+						ft_reverse_rotate_a(a);
+						(a->i)--;
+					}
+					a->i = a->nb - 1;
+					ft_push_a(a, &b);
+					(a->i)++;
+				}
+			}
 		}
 	}
 	else

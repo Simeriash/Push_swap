@@ -2,4 +2,4 @@ objs/
 checker_linux
 push_swap
 *.txt
-srcs/libft/libft.a
+*.a
