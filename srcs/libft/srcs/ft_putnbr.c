@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:50:01 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/02 11:26:16 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/03 11:56:55 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char	*ft_itoa_p(long nbr)
 	if (nbr < 0)
 		sign = 1;
 	len = ft_intlen(nbr, 10, 0) + sign;
-	str = ft_calloc(len + 1, sizeof (*str));
+	str = malloc(sizeof (*str) * (len + 1));
 	if (!str)
 		return (NULL);
 	if (sign)
@@ -64,6 +64,7 @@ static char	*ft_itoa_p(long nbr)
 		nbr /= 10;
 		i--;
 	}
+	str[len] = '\0';
 	return (str);
 }
 
@@ -74,7 +75,7 @@ static char	*ft_itoa_hexa(size_t nbr, int p, int lc)
 	int		i;
 
 	len = ft_intlen(nbr, 16, p) + p;
-	str = ft_calloc(len + 1, sizeof (*str));
+	str = malloc(sizeof (*str) * (len + 1));
 	if (!str)
 		return (NULL);
 	if (p)
@@ -91,6 +92,7 @@ static char	*ft_itoa_hexa(size_t nbr, int p, int lc)
 		nbr /= 16;
 		i--;
 	}
+	str[len] = '\0';
 	return (str);
 }
 

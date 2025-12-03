@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 12:04:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/02 11:27:01 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:07:24 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		return (dest);
 	}
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	dest = ft_calloc(len, sizeof (*dest));
+	dest = malloc(sizeof (*dest) * len);
 	if (!dest)
 		return (NULL);
 	ft_strlcpy(dest, s1, len);
 	ft_strlcat(dest, s2, len);
+	dest[len - 1] = '\0';
 	return (dest);
 }

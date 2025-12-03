@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 11:39:12 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/02 11:24:37 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/03 11:55:57 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		sign = 1;
 	len = ft_intlen(n) + sign;
-	str = ft_calloc(len + 1, sizeof (*str));
+	str = malloc(sizeof (*str) * (len + 1));
 	if (!str)
 		return (NULL);
 	if (sign)
@@ -50,5 +50,6 @@ char	*ft_itoa(int n)
 		n = n / 10;
 		i--;
 	}
+	str[len] = '\0';
 	return (str);
 }
