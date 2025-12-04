@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:14:12 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/03 09:52:51 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:57:53 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_p(t_stack *a)
 {
 	int	i;
-	
+
 	i = a->nb - 1;
 	printf("\n");
 	while (i >= 0)
@@ -46,8 +46,8 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	ft_p(&a);
-	// ft_sort_stack(&a);
-	// ft_p(&a);
+	ft_sort_stack(&a);
+	ft_p(&a);
 	free(a.list);
 	return (0);
 }
