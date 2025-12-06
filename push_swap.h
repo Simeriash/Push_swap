@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/03 08:02:39 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/06 17:53:25 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ struct s_stack
 {
 	int	nb;
 	int	*list;
-	int	i;
-	int	j;
+	int	max;
+	int	min;
 	int	median;
 };
 
