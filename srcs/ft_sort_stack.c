@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/07 15:34:23 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/07 17:11:19 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ int	ft_sort_stack(t_stack *a)
 	while (a->nb < len)
 	{
 		a->min = ft_min(a, b.list[b.nb - 1]);
-		if (a->min)
+		if (a->min >= 0)
 		{
 			a->median = (a->nb - 1) / 2;
 			if (a->min >= a->median)
