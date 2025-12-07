@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/07 14:01:43 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/07 15:34:23 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_sort_stack(t_stack *a)
 	len = a->nb;
 	if (ft_stack_sorted(a))
 		return (0);
-	b.list = malloc(sizeof (int) * (len - 3));
+	b.list = malloc(sizeof (int) * len);
 	if (!(b.list))
 		return (-1);
 	b.nb = 0;
@@ -138,7 +138,7 @@ int	ft_sort_stack(t_stack *a)
 		if (b.nb == 2 && (b.list[1] < b.list[0]))
 			ft_swap_b(&b);
 	}
-	if (!(ft_stack_sorted(a)))
+	if (a->nb > 2 && !(ft_stack_sorted(a)))
 	{
 		if (a->max == 2)
 			ft_rotate_a(a);
