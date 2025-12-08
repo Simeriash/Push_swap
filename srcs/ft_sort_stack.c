@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/07 17:11:19 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/08 13:54:00 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,151 +68,96 @@ static int	ft_stack_sorted(t_stack *x)
 	return (1);
 }
 
+static int	ft_init_stack(t_stack *x)
+{
+	int	threshold;
+
+	x->min = ft_min(x, INT_MIN);
+	threshold = x->list[x->min];
+	x->median = (x->nb - 1) / 2;
+	if (x->min >= x->median)
+	{
+		while (x->min < (x->nb - 1))
+		{
+			ft_rotate_a(x);
+			(x->min)++;
+		}
+	}
+	else
+	{
+		while (x->min >= 0)
+		{
+			ft_reverse_rotate_a(x);
+			(x->min)--;
+		}
+	}
+	return (threshold);
+}
+
+static int	ft_next_index(t_stack *x, int *threshold, int delta)
+{
+	x->max = x->nb - 1;
+	while ((x->list[x->max] > (threshold + delta)) && x->max >= 0)
+		(x->max)--;
+	if (x->max == -1)
+	{
+
+	}
+	x->min = 0;
+	while ((x->list[x->min] > (threshold + delta)) && (x->min <= (x->nb - 1)))
+		(x->min)++;
+}
+
 int	ft_sort_stack(t_stack *a)
 {
 	t_stack	b;
-	int		len;
+	int		delta;
+	int		threshold;
 
-	len = a->nb;
 	if (ft_stack_sorted(a))
 		return (0);
-	b.list = malloc(sizeof (int) * len);
+	b.list = malloc(sizeof (int) * (a->nb));
 	if (!(b.list))
 		return (-1);
 	b.nb = 0;
-	a->max = ft_max(a, INT_MAX);
-	while (a->nb > 3)
+	delta = (a->nb) / 20 + 7;
+	threshold = ft_init_stack(a);
+	while (a->nb > 0)
 	{
-		if ((a->nb - 1) == a->max)
+		if (a->list[a->nb - 1] <= threshold + delta)
 		{
-			ft_rotate_a(a);
-			a->max = 0;
-			continue ;
+			ft_push_b(&b, a);
+			if (a->list[a->nb - 1] <= (threshold + (delta / 2)))
+				ft_rotate_b(&b);
+			threshold++;
 		}
-		if (b.nb > 2 && (a->list[a->nb - 1] < b.list[b.nb - 1]))
+		else
 		{
-			b.max = ft_max(&b, a->list[a->nb - 1]);
-			if (b.max >= 0)
-			{
-				b.median = (b.nb - 1) / 2;
-				if (b.max >= b.median)
-				{
-					while (b.max < (b.nb - 1))
-					{
-						ft_rotate_b(&b);
-						(b.max)++;
-					}
-				}
-				else
-				{
-					while (b.max >= 0)
-					{
-						ft_reverse_rotate_b(&b);
-						(b.max)--;
-					}
-				}
-			}
-			else
-			{
-				b.min = ft_min(&b, a->list[a->nb - 1]);
-				b.median = (b.nb - 1) / 2;
-				if (b.min > b.median)
-				{
-					while (b.min < b.nb)
-					{
-						ft_rotate_b(&b);
-						(b.min)++;
-					}
-				}
-				else
-				{
-					while (b.min > 0)
-					{
-						ft_reverse_rotate_b(&b);
-						(b.min)--;
-					}
-				}
-			}
+			// ft_rotate_a(a);
+			
 		}
-		ft_push_b(&b, a);
-		if (b.nb == 2 && (b.list[1] < b.list[0]))
-			ft_swap_b(&b);
 	}
-	if (a->nb > 2 && !(ft_stack_sorted(a)))
+	while (b.nb > 0)
 	{
-		if (a->max == 2)
-			ft_rotate_a(a);
-		if (a->max == 1)
-			ft_reverse_rotate_a(a);
-		if (a->list[2] > a->list[1])
-			ft_swap_a(a);
-	}
-	while (a->nb < len)
-	{
-		a->min = ft_min(a, b.list[b.nb - 1]);
-		if (a->min >= 0)
+		b.max = ft_max(&b, INT_MAX);
+		b.median = (b.nb - 1) / 2;
+		if (b.max >= b.median)
 		{
-			a->median = (a->nb - 1) / 2;
-			if (a->min >= a->median)
+			while (b.max < (b.nb - 1))
 			{
-				while (a->min < (a->nb - 1))
-				{
-					ft_rotate_a(a);
-					(a->min)++;
-				}
-			}
-			else
-			{
-				while (a->min >= 0)
-				{
-					ft_reverse_rotate_a(a);
-					(a->min)--;
-				}
+				ft_rotate_b(&b);
+				(b.max)++;
 			}
 		}
 		else
 		{
-			a->max = ft_max(a, b.list[b.nb - 1]);
-			a->median = (a->nb - 1) / 2;
-			if (a->max > a->median)
+			while (b.max >= 0)
 			{
-				while (a->max < a->nb)
-				{
-					ft_rotate_a(a);
-					(a->max)++;
-				}
-			}
-			else
-			{
-				while (a->max > 0)
-				{
-					ft_reverse_rotate_a(a);
-					(a->max)--;
-				}
+				ft_reverse_rotate_b(&b);
+				(b.max)--;
 			}
 		}
 		ft_push_a(a, &b);
-	}
-	a->max = ft_max(a, INT_MAX);
-	if (a->max)
-	{
-		a->median = (a->nb - 1) / 2;
-		if (a->max > a->median)
-		{
-			while (a->max < a->nb)
-			{
-				ft_rotate_a(a);
-				(a->max)++;
-			}
-		}
-		else
-		{
-			while (a->max > 0)
-			{
-				ft_reverse_rotate_a(a);
-				(a->max)--;
-			}
-		}
 	}
 	free(b.list);
 	return (0);
