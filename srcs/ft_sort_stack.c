@@ -6,106 +6,62 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/08 13:54:00 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:18:39 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	ft_min(t_stack *x, int min)
+static void	ft_next_index(t_stack *a, t_stack *b, int *threshold, int delta)
 {
-	int	i;
 	int	tmp;
-	int	index;
-
-	i = 0;
-	index = -1;
-	tmp = INT_MAX;
-	while (i < x->nb)
-	{
-		if ((x->list[i] > min) && (tmp > x->list[i]))
-		{
-			tmp = x->list[i];
-			index = i;
-		}
-		i++;
-	}
-	return (index);
-}
-
-static int	ft_max(t_stack *x, int max)
-{
-	int	i;
-	int	tmp;
-	int	index;
-
-	i = 0;
-	index = -1;
-	tmp = INT_MIN;
-	while (i < x->nb)
-	{
-		if ((x->list[i] < max) && (tmp < x->list[i]))
-		{
-			tmp = x->list[i];
-			index = i;
-		}
-		i++;
-	}
-	return (index);
-}
-
-static int	ft_stack_sorted(t_stack *x)
-{
 	int	i;
 
-	i = 0;
-	while (i < x->nb - 1)
+	tmp = *threshold;
+	a->max = a->nb - 1;
+	while (a->max >= 0 && (a->list[a->max] > (*threshold + delta)))
+		(a->max)--;
+	while (a->max == -1)
 	{
-		if (x->list[i] < x->list[i + 1])
-			return (0);
-		i++;
+		a->max = a->nb - 1;
+		tmp++;
+		while (a->max >= 0 && (a->list[a->max] > (tmp + delta)))
+			(a->max)--;
 	}
-	return (1);
-}
-
-static int	ft_init_stack(t_stack *x)
-{
-	int	threshold;
-
-	x->min = ft_min(x, INT_MIN);
-	threshold = x->list[x->min];
-	x->median = (x->nb - 1) / 2;
-	if (x->min >= x->median)
+	a->min = 0;
+	while ((a->min <= (a->nb - 1)) && (a->list[a->min] > (*threshold + delta)) && a->min < a->max)
+		(a->min)++;
+	if ((a->nb - a->max) <= (a->min + 1))
+		i = a->max;
+	else
+		i = a->min;
+	a->median = (a->nb - 1) / 2;
+	if (i >= a->median)
 	{
-		while (x->min < (x->nb - 1))
+		while (i < (a->nb - 1))
 		{
-			ft_rotate_a(x);
-			(x->min)++;
+			ft_rotate_a(a);
+			i++;
 		}
 	}
 	else
 	{
-		while (x->min >= 0)
+		if (a->nb > 1)
 		{
-			ft_reverse_rotate_a(x);
-			(x->min)--;
+			while (i >= 0)
+			{
+				ft_reverse_rotate_a(a);
+				i--;
+			}
 		}
 	}
-	return (threshold);
-}
-
-static int	ft_next_index(t_stack *x, int *threshold, int delta)
-{
-	x->max = x->nb - 1;
-	while ((x->list[x->max] > (threshold + delta)) && x->max >= 0)
-		(x->max)--;
-	if (x->max == -1)
+	if (a->list[a->nb - 1] <= (tmp + delta))
 	{
-
+		ft_push_b(b, a);
+		if (b->nb > 1 && a->nb > 1 && (a->list[a->nb - 1] <= tmp))
+			ft_rotate_b(b);
+		(*threshold)++;
 	}
-	x->min = 0;
-	while ((x->list[x->min] > (threshold + delta)) && (x->min <= (x->nb - 1)))
-		(x->min)++;
 }
 
 int	ft_sort_stack(t_stack *a)
@@ -120,22 +76,20 @@ int	ft_sort_stack(t_stack *a)
 	if (!(b.list))
 		return (-1);
 	b.nb = 0;
-	delta = (a->nb) / 20 + 7;
-	threshold = ft_init_stack(a);
+	delta = (a->nb) / 20 + 3;
+	a->min = ft_min(a, INT_MIN);
+	threshold = a->list[a->min];
 	while (a->nb > 0)
 	{
-		if (a->list[a->nb - 1] <= threshold + delta)
+		if (a->list[a->nb - 1] <= (threshold + delta))
 		{
 			ft_push_b(&b, a);
-			if (a->list[a->nb - 1] <= (threshold + (delta / 2)))
+			if (b.nb > 1 && a->nb > 1 && (b.list[b.nb - 1] <= threshold))
 				ft_rotate_b(&b);
 			threshold++;
 		}
 		else
-		{
-			// ft_rotate_a(a);
-			
-		}
+			ft_next_index(a, &b, &threshold, delta);
 	}
 	while (b.nb > 0)
 	{

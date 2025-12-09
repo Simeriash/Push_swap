@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/06 17:53:25 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:21:27 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ char	**ft_split_ps(const char *s);
 int		ft_atoi_ps(const char *str, int *ctrl);
 int		ft_format_stack(t_stack *a);
 int		ft_sort_stack(t_stack *a);
+int		ft_min(t_stack *x, int min);
+int		ft_max(t_stack *x, int max);
+int		ft_stack_sorted(t_stack *x);
 
 #endif

@@ -8,7 +8,7 @@ HEADER := push_swap.h
 LIBFT := srcs/libft/libft.a
 
 
-SOURCES := ft_push_swap.c ft_swap.c ft_push.c ft_rotate.c ft_reverse_rotate.c ft_make_list.c ft_split_ps.c ft_atoi_ps.c ft_format_stack.c ft_sort_stack.c
+SOURCES := ft_push_swap.c ft_swap.c ft_push.c ft_rotate.c ft_reverse_rotate.c ft_make_list.c ft_split_ps.c ft_atoi_ps.c ft_format_stack.c ft_sort_stack.c ft_sort_stack_utils.c
 
 
 SRCS_DIR := srcs/
