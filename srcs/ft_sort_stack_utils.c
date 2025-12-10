@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:15:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/09 14:18:35 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/10 15:33:53 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	ft_min(t_stack *x, int min)
 	tmp = INT_MAX;
 	while (i < x->nb)
 	{
+		if (x->list[i] == min)
+			return (i);
 		if ((x->list[i] > min) && (tmp > x->list[i]))
 		{
 			tmp = x->list[i];
@@ -44,6 +46,8 @@ int	ft_max(t_stack *x, int max)
 	tmp = INT_MIN;
 	while (i < x->nb)
 	{
+		if (x->list[i] == max)
+			return (i);
 		if ((x->list[i] < max) && (tmp < x->list[i]))
 		{
 			tmp = x->list[i];
