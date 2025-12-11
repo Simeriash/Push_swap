@@ -3,6 +3,5 @@ checker_linux
 push_swap
 *.txt
 *.a
-algo_1.c
 usr/
 *.deb
