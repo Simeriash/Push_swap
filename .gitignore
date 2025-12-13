@@ -1,6 +1,9 @@
-objs/
+obj/
+src/libft/obj
 checker_linux
 push_swap
+push_swap_tester/
+push_swap-testeur-max/
 *.txt
 *.a
 usr/

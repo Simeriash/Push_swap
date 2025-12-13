@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/09 15:09:02 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/12 15:55:01 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdio.h>		//A EFFACER !!!
-# include "srcs/libft/libft.h"
+# include "src/libft/libft.h"
 
 typedef struct s_stack	t_stack;
 struct s_stack

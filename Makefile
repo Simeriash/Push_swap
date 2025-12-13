@@ -5,40 +5,40 @@ CFLAGS := -Wall -Wextra -Werror -g
 
 HEADER := push_swap.h
 
-LIBFT := srcs/libft/libft.a
+LIBFT := src/libft/libft.a
 
 
 SOURCES := ft_push_swap.c ft_swap.c ft_push.c ft_rotate.c ft_reverse_rotate.c ft_make_list.c ft_split_ps.c ft_atoi_ps.c ft_format_stack.c ft_sort_stack.c ft_sort_stack_utils.c
 
 
-SRCS_DIR := srcs/
-SRCS := $(addprefix $(SRCS_DIR), $(SOURCES))
+SRC_DIR := src/
+SRC := $(addprefix $(SRC_DIR), $(SOURCES))
 
-OBJS_DIR := objs/
-OBJS := $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+OBJ_DIR := obj/
+OBJ := $(addprefix $(OBJ_DIR), $(SOURCES:.c=.o))
 
 
 .PHONY : all clean fclean re
 
 all : $(NAME)
 
-$(NAME) : $(OBJS_DIR) $(OBJS)
-	$(MAKE) -C srcs/libft
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
+$(NAME) : $(OBJ_DIR) $(OBJ)
+	$(MAKE) -C src/libft
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $@
 
-$(OBJS_DIR) :
-	mkdir -p $(OBJS_DIR)$(SRCS_DIR)
+$(OBJ_DIR) :
+	mkdir -p $(OBJ_DIR)
 
-$(OBJS_DIR)%.o : %.c
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -I $(HEADER) -c $< -o $@
 
 clean : 
-	rm -rf $(OBJS)
-	rm -rf $(OBJS_DIR)
-	$(MAKE) -C srcs/libft -B clean
+	rm -rf $(OBJ)
+	rm -rf $(OBJ_DIR)
+	$(MAKE) -C src/libft -B clean
 
 fclean : clean
 	rm -rf $(NAME)
-	$(MAKE) -C srcs/libft -B fclean
+	$(MAKE) -C src/libft -B fclean
 
 re : fclean all
