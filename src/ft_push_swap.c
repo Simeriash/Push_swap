@@ -6,11 +6,22 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:14:12 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/07 14:12:02 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/13 17:06:15 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+static void	ft_quicksort(t_stack *a)
+{
+	a->max = ft_max(a, INT_MAX);
+	if (a->max == 2)
+		ft_rotate(a, 'a');
+	if (a->max == 1)
+		ft_reverse_rotate(a, 'a');
+	if (a->list[a->nb - 1] > a->list[a->nb - 2])
+		ft_swap_a(a);
+}
 
 int	main(int ac, char **av)
 {
@@ -29,7 +40,10 @@ int	main(int ac, char **av)
 			free(a.list);
 		return (0);
 	}
-	ft_sort_stack(&a);
+	if (a.nb < 4)
+		ft_quicksort(&a);
+	else
+		ft_sort_stack(&a);
 	free(a.list);
 	return (0);
 }
