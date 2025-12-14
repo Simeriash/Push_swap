@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/13 16:32:36 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/14 10:41:06 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static void	ft_full_stock_b(t_stack *a, t_stack *b, int *pivot, int delta)
 	ft_push_b(b, a);
 	if (b->nb > 1 && (b->list[b->nb - 1] <= *pivot))
 	{
-		// if (a->nb > 1 && (a->list[a->nb - 1] > (*pivot + delta)))
-		// 	ft_both_rotate(a, b);
-		// else
-		(void)delta;
+		if (a->nb > 1 && (a->list[a->nb - 1] > (*pivot + delta)))
+			ft_both_rotate(a, b);
+		else
+		// (void)delta;
 			ft_rotate(b, 'b');
 	}
 	(*pivot)++;
@@ -110,7 +110,7 @@ int	ft_sort_stack(t_stack *a)
 	if (!(b.list))
 		return (-1);
 	b.nb = 0;
-	delta = (a->nb) / 10 + 7;
+	delta = (a->nb) / 20 + 7;
 	a->min = ft_min(a, INT_MIN);
 	pivot = a->list[a->min];
 	ft_butterfly(a, &b, pivot, delta);
