@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/14 10:41:06 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/15 09:23:18 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static void	ft_full_stock_b(t_stack *a, t_stack *b, int *pivot, int delta)
 	ft_push_b(b, a);
 	if (b->nb > 1 && (b->list[b->nb - 1] <= *pivot))
 	{
-		if (a->nb > 1 && (a->list[a->nb - 1] > (*pivot + delta)))
-			ft_both_rotate(a, b);
-		else
-		// (void)delta;
+		// if (a->nb > 1 && (a->list[a->nb - 1] > (*pivot + delta)))
+		// 	ft_both_rotate(a, b);
+		// else
+		(void)delta;
 			ft_rotate(b, 'b');
 	}
 	(*pivot)++;
@@ -51,17 +51,18 @@ static void	ft_next_index(t_stack *a, t_stack *b, int *pivot, int delta)
 {
 	int	tmp;
 
+	// a->max = ft_min(a, INT_MIN);
 	tmp = a->list[ft_min(a, INT_MIN)];
 	// *pivot;
 	while (a->max == -1)
 	{
 		a->max = a->nb - 1;
-		tmp++;
 		while (a->max >= 0 && (a->list[a->max] > (tmp + delta)))
 			(a->max)--;
+		tmp++;
 	}
 	a->min = 0;
-	while ((a->min <= (a->nb - 1)) && (a->list[a->min] > (*pivot + delta))
+	while ((a->min <= (a->nb - 1)) && (a->list[a->min] > (tmp + delta))
 		&& a->min < a->max)
 		(a->min)++;
 	if ((a->nb - a->max - 1) > (a->min + 1))
@@ -69,10 +70,10 @@ static void	ft_next_index(t_stack *a, t_stack *b, int *pivot, int delta)
 	if (a->nb > 1)
 		ft_up_max(a, 'a');
 	ft_full_stock_b(a, b, &tmp, delta);
-	(*pivot)++;
+	(*pivot) = tmp;
 }
 
-static void	ft_butterfly(t_stack *a, t_stack *b, int pivot, int delta)
+static void	ft_special_k(t_stack *a, t_stack *b, int pivot, int delta)
 {
 	while (a->nb > 0)
 	{
@@ -113,7 +114,7 @@ int	ft_sort_stack(t_stack *a)
 	delta = (a->nb) / 20 + 7;
 	a->min = ft_min(a, INT_MIN);
 	pivot = a->list[a->min];
-	ft_butterfly(a, &b, pivot, delta);
+	ft_special_k(a, &b, pivot, delta);
 	free(b.list);
 	return (0);
 }
