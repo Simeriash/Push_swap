@@ -27,7 +27,7 @@ static int	ft_count_nb(const char *str)
 			return (count);
 		if (str[i] == '-' || str[i] == '+')
 			i++;
-		while (!(ft_isdigit(str[i])))
+		while (!(ft_isdigit(str[i])))			// IF ??
 			return (-2);
 		while (ft_isdigit(str[i]) && str[i] != '\0')
 			i++;
