@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/15 09:23:18 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:05:01 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,6 @@ int	ft_sort_stack(t_stack *a)
 	int		delta;
 	int		pivot;
 
-	if (ft_stack_sorted(a))
-		return (0);
 	b.list = malloc(sizeof (int) * (a->nb));
 	if (!(b.list))
 		return (-1);

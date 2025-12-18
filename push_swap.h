@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/12 15:55:01 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:05:29 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ int		ft_format_stack(t_stack *a);
 int		ft_sort_stack(t_stack *a);
 int		ft_min(t_stack *x, int min);
 int		ft_max(t_stack *x, int max);
-int		ft_stack_sorted(t_stack *x);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 10:13:14 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/02 14:17:50 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:15:16 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ static void	ft_swap_stack(t_stack *a)
 	}
 }
 
+static int	ft_stack_sorted(t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while (i < a->nb - 1)
+	{
+		if (a->list[i] > a->list[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	ft_format_stack(t_stack *a)
 {
 	int	i;
@@ -48,6 +62,8 @@ int	ft_format_stack(t_stack *a)
 		}
 		i++;
 	}
+	if (ft_stack_sorted(a))
+		return (-1);
 	ft_swap_stack(a);
 	return (0);
 }

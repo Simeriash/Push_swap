@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:12:38 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/12 17:06:21 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:16:41 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	ft_fill_in_tab(int ac, char **av, t_stack *a)
 	}
 	index.ctrl = ft_format_stack(a);
 	if (index.ctrl < 0)
-		return (-2);
+		return (index.ctrl);
 	return (0);
 }
 
