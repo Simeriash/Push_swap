@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/18 17:05:01 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/18 18:01:53 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,11 @@ static void	ft_up_max(t_stack *x, char c)
 	}
 }
 
-static void	ft_full_stock_b(t_stack *a, t_stack *b, int *pivot, int delta)
+static void	ft_full_stock_b(t_stack *a, t_stack *b, int *pivot)
 {
 	ft_push_b(b, a);
 	if (b->nb > 1 && (b->list[b->nb - 1] <= *pivot))
-	{
-		// if (a->nb > 1 && (a->list[a->nb - 1] > (*pivot + delta)))
-		// 	ft_both_rotate(a, b);
-		// else
-		(void)delta;
-			ft_rotate(b, 'b');
-	}
+		ft_rotate(b, 'b');
 	(*pivot)++;
 }
 
@@ -51,9 +45,7 @@ static void	ft_next_index(t_stack *a, t_stack *b, int *pivot, int delta)
 {
 	int	tmp;
 
-	// a->max = ft_min(a, INT_MIN);
 	tmp = a->list[ft_min(a, INT_MIN)];
-	// *pivot;
 	while (a->max == -1)
 	{
 		a->max = a->nb - 1;
@@ -69,7 +61,7 @@ static void	ft_next_index(t_stack *a, t_stack *b, int *pivot, int delta)
 		a->max = a->min;
 	if (a->nb > 1)
 		ft_up_max(a, 'a');
-	ft_full_stock_b(a, b, &tmp, delta);
+	ft_full_stock_b(a, b, &tmp);
 	(*pivot) = tmp;
 }
 
@@ -78,7 +70,7 @@ static void	ft_special_k(t_stack *a, t_stack *b, int pivot, int delta)
 	while (a->nb > 0)
 	{
 		if (a->list[a->nb - 1] <= (pivot + delta))
-			ft_full_stock_b(a, b, &pivot, delta);
+			ft_full_stock_b(a, b, &pivot);
 		else
 		{
 			a->max = a->nb - 1;
