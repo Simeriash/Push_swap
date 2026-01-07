@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:12:38 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/06 09:53:41 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/07 13:09:45 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,18 @@ static int	ft_count_nb(const char *str)
 	return (count);
 }
 
-static int	ft_fill_in_stack(char **tab, t_stack *a, int *ctrl)
+static int	ft_fill_in_stack(char **tab, t_stack *a)
 {
 	int			i;
+	int			ctrl;
 	static int	j;
 
 	i = 0;
-	*ctrl = 0;
+	ctrl = 0;
 	while (tab[i])
 	{
-		a->list[j] = ft_atoi_ps(tab[i], ctrl);
-		if (*ctrl == 1)
+		a->list[j] = ft_atoi_ps(tab[i], &ctrl);
+		if (ctrl == 1)
 		{
 			while (tab[i])
 			{
@@ -78,7 +79,7 @@ static int	ft_fill_in_tab(int ac, char **av, t_stack *a)
 		tab = ft_split_ps(av[i]);
 		if (!tab)
 			return (-1);
-		if (ft_fill_in_stack(tab, a, &ctrl) < 0)
+		if (ft_fill_in_stack(tab, a) < 0)
 			return (-2);
 		i++;
 	}
