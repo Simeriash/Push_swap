@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_max_value.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/26 13:29:36 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/20 11:51:25 by julauren         ###   ########.fr       */
+/*   Created: 2025/12/09 14:15:44 by julauren          #+#    #+#             */
+/*   Updated: 2025/12/20 12:40:26 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	ft_push_i(t_stack *i, t_stack *j)
+int	ft_max_value(t_stack *x)
 {
-	if (j->nb == 0)
-		return ;
-	i->list[i->nb] = j->list[j->nb - 1];
-	(i->nb)++;
-	(j->nb)--;
-}
+	int	i;
+	int	tmp;
+	int	index;
 
-void	ft_push_a(t_stack *a, t_stack *b)
-{
-	ft_push_i(a, b);
-	write(1, "pa\n", 3);
-}
-
-void	ft_push_b(t_stack *b, t_stack *a)
-{
-	ft_push_i(b, a);
-	write(1, "pb\n", 3);
+	i = 0;
+	index = 0;
+	tmp = x->list[i];
+	while (i < x->nb)
+	{
+		if (x->list[i] > tmp)
+		{
+			tmp = x->list[i];
+			index = i;
+		}
+		i++;
+	}
+	return (index);
 }

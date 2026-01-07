@@ -8,7 +8,8 @@ HEADER := push_swap.h
 LIBFT := src/libft/libft.a
 
 
-SOURCES := ft_push_swap.c ft_swap.c ft_push.c ft_rotate.c ft_reverse_rotate.c ft_make_list.c ft_split_ps.c ft_atoi_ps.c ft_format_stack.c ft_sort_stack.c ft_sort_stack_utils.c
+SOURCES := ft_push_swap.c ft_swap.c ft_push.c ft_rotate.c ft_reverse_rotate.c ft_make_list.c ft_split_ps.c ft_atoi_ps.c ft_format_stack.c\
+		ft_max_value.c ft_k_distribution_sort.c ft_turkish_sort.c ft_push_to_b.c ft_push_to_a.c ft_min_max.c
 
 
 SRC_DIR := src/
@@ -32,7 +33,7 @@ $(OBJ_DIR) :
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -I $(HEADER) -c $< -o $@
 
-clean : 
+clean :
 	rm -rf $(OBJ)
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C src/libft -B clean

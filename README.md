@@ -8,10 +8,14 @@ To succeed, you will need to work with various algorithms and choose the most ap
 
 # **Instructions**
 
-> [!NOTE]
-> Section containing any relevant information about compilation, installation, and/or execution.
+For compilation, you must run the Makefile file by executing the Make command in the terminal.
+
+For execution, run the executable file "push_swap" with the arguments you want.
 
 # **Ressources**
 
-> [!NOTE]
-> Section listing classic references related to the topic (documentation, articles, tutorials, etc.), as well as a description of how AI was used — specifying for which tasks and which parts of the project.
+- K-distribution sort :
+https://medium.com/@brakebein42/k-distribution-sort-applied-to-the-push-swap-problem-ae2d96d68376
+
+- Turkish algorithm :
+https://medium.com/@ayogun/push-swap-c1f5d2d41e97

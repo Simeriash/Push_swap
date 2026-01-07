@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 16:14:38 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/12 17:37:16 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/06 09:35:04 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	ft_atoi_ps(const char *str, int *ctrl)
 		i++;
 	while (ft_isdigit(str[i]))
 	{
-		if ((num > INT_MAX && sign == 1) || (num  * sign < INT_MIN))
+		if ((num > INT_MAX && sign == 1) || (num * sign < INT_MIN))
 			break ;
 		num = num * 10 + str[i] - 48;
 		i++;
 	}
-	if ((num > INT_MAX && sign == 1)|| (num * sign < INT_MIN))
+	if ((num > INT_MAX && sign == 1) || (num * sign < INT_MIN))
 	{
 		num = 0;
 		*ctrl = 1;

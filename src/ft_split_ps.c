@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:30:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/12 16:23:53 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:26:32 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static int	ft_count_nb(const char *str)
 	count = 0;
 	while (str[i] != '\0')
 	{
-		while (ft_isspace(str[i]) && str[i] != '\0')
+		while (ft_isspace(str[i]))
 			i++;
 		if (str[i] == '\0')
 			return (count);
 		if (str[i] == '-' || str[i] == '+')
 			i++;
-		while (ft_isdigit(str[i]) && str[i] != '\0')
+		while (ft_isdigit(str[i]))
 			i++;
 		count++;
 	}
