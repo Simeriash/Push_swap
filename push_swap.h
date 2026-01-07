@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:34:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/21 14:02:16 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/07 16:14:23 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ struct s_stack
 	int	median;
 };
 
-int		main(int ac, char **av);
 void	ft_swap_a(t_stack *a);
 void	ft_swap_b(t_stack *b);
 void	ft_swap_al(t_stack *a, int *list_index);

@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 13:55:34 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/07 11:25:03 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/07 16:38:34 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ int	ft_turkish_sort(t_stack *a)
 	int		len;
 
 	len = a->nb;
-	b.list = malloc(sizeof (int) * len);
+	b.list = malloc(sizeof (*b.list) * len);
 	if (!(b.list))
 		return (-1);
 	b.nb = 0;
-	a->max = ft_max(a, INT_MAX);
+	a->max = ft_max_value(a);
 	ft_push_to_b(a, &b);
 	if (a->max == 2)
 		ft_rotate_a(a);
@@ -69,7 +69,7 @@ int	ft_turkish_sort(t_stack *a)
 	if (a->list[a->nb - 1] > a->list[ a->nb - 2])
 		ft_swap_a(a);
 	ft_push_to_a(a, &b, len);
-	a->max = ft_max(a, INT_MAX);
+	a->max = ft_max_value(a);
 	ft_stack_in_order(a);
 	free(b.list);
 	return (0);

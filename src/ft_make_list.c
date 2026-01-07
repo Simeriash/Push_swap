@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:12:38 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/07 13:09:45 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/07 16:06:20 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_count_nb(const char *str)
 	count = 0;
 	while (str[i] != '\0')
 	{
-		while (ft_isspace(str[i]) && str[i] != '\0')
+		while (ft_isspace(str[i]))
 			i++;
 		if (str[i] == '\0')
 			return (count);
@@ -29,9 +29,9 @@ static int	ft_count_nb(const char *str)
 			i++;
 		if (!(ft_isdigit(str[i])))
 			return (-2);
-		while (ft_isdigit(str[i]) && str[i] != '\0')
+		while (ft_isdigit(str[i]))
 			i++;
-		if (!(ft_isdigit(str[i])) && !(ft_isspace(str[i]) || str[i] == '\0'))
+		if (!(ft_isspace(str[i]) || str[i] == '\0'))
 			return (-2);
 		count++;
 	}
@@ -104,7 +104,7 @@ int	ft_make_list(int ac, char **av, t_stack *a)
 		(a->nb) += ctrl;
 		i++;
 	}
-	a->list = malloc(sizeof(int) * (a->nb));
+	a->list = malloc(sizeof (*a->list) * (a->nb));
 	if (!(a->list))
 		return (-1);
 	ctrl = ft_fill_in_tab(ac, av, a);

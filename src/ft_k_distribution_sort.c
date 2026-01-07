@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:46:42 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/21 14:03:11 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/07 15:56:29 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,16 @@ int	ft_k_distribution_sort(t_stack *a)
 	t_stack	b;
 	int		*list_index;
 
-	b.list = malloc(sizeof (int) * (a->nb));
+	b.list = malloc(sizeof (*b.list) * (a->nb));
 	if (!(b.list))
 		return (-1);
 	b.nb = 0;
 	list_index = malloc(sizeof (*list_index) * (a->nb));
 	if (!list_index)
+	{
+		free(b.list);
 		return (-1);
+	}
 	ft_list_index(a, list_index);
 	ft_special_k(a, &b, list_index);
 	free(list_index);
