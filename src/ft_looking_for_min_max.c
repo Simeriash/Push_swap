@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_min_max.c                                       :+:      :+:    :+:   */
+/*   ft_looking_for_min_max.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 11:49:44 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/21 11:50:16 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/09 12:00:41 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,27 @@ int	ft_max(t_stack *x, int max)
 		if (x->list[i] == max)
 			return (i);
 		if ((x->list[i] < max) && (tmp < x->list[i]))
+		{
+			tmp = x->list[i];
+			index = i;
+		}
+		i++;
+	}
+	return (index);
+}
+
+int	ft_max_value(t_stack *x)
+{
+	int	i;
+	int	tmp;
+	int	index;
+
+	i = 0;
+	index = 0;
+	tmp = x->list[i];
+	while (i < x->nb)
+	{
+		if (x->list[i] > tmp)
 		{
 			tmp = x->list[i];
 			index = i;

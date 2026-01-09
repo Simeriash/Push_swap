@@ -9,7 +9,7 @@ LIBFT := src/libft/libft.a
 
 
 SOURCES := ft_push_swap.c ft_swap.c ft_push.c ft_rotate.c ft_reverse_rotate.c ft_make_list.c ft_split_ps.c ft_atoi_ps.c ft_format_stack.c\
-		ft_max_value.c ft_k_distribution_sort.c ft_turkish_sort.c ft_push_to_b.c ft_push_to_a.c ft_min_max.c
+		ft_k_distribution_sort.c ft_turkish_sort.c ft_push_to_b_back_in_a.c ft_looking_for_min_max.c
 
 
 SRC_DIR := src/
